@@ -1,3 +1,20 @@
+h1 Pivoted table
+
+table.pivot
+  tr
+    th Indicators
+    - for (var key in records)
+      th= records[key][idKey]
+    th % Difference
+
+    - for (var field in schema.properties)
+      - if (field !== idKey)
+        tr
+          th(id: 'field-' + field)= schema.properties[field].name
+          - for (var key in records)
+            != partial('indicator', [records[key][field]])
+          != partial('diff', [calculateDiff(field, records)])
+
 h1 Normal table
 
 table
@@ -11,18 +28,3 @@ table
     tr
       - for (var field in schema.properties)
         != partial('diff', [calculateDiff(field, records)])
-
-h1 Pivoted table
-
-table.pivot
-  tr
-    th Indicators
-    - for (var key in records)
-      th= records[key][idKey]
-
-    - for (var field in schema.properties)
-      - if (field !== idKey)
-        tr
-          th(id: 'field-' + field)= schema.properties[field].name
-          - for (var key in records)
-            != partial('indicator', [records[key][field]])
