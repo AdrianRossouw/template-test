@@ -2,7 +2,7 @@ table
   tr
     - for (var key in schema.properties)
       th(id: 'field-' + key)= schema.properties[key].name
-  tr
     - for (var key in records)
-      - for (var field in schema.properties)
-        != partial('value', [records[key][field]])
+      tr
+        - for (var field in schema.properties)
+          != partial('value', [records[key][field]])

@@ -4,6 +4,7 @@ var schema = require('schema');
 
 var app = require('express').createServer();
 
+/*
 var filters = require('jade').filters;
 
 filters.USD = function(value) { return '$' + require('./util').ac(value); }
@@ -20,7 +21,7 @@ filters.rank= function(value) {
        }
    }
 filters.string= function(value) { return value; }
-
+*/
 
 app.set('view engine', 'jade');
 
@@ -28,7 +29,7 @@ app.get('*', function(req, res) {
   res.render('page', {
       locals: {
           idKey: 'postcode',
-          records: [data],
+          records: [data, data],
           schema: schema
       }
   });
