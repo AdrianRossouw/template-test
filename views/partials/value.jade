@@ -1,0 +1,12 @@
+td
+  - if (typeof value !== 'undefined')
+    - if (typeof value === 'object')
+      div.flot-series-year
+      - for (year in value)
+        div.graph
+        div.data
+          span.year= year
+          span.value= value[year]
+          span.display= value[year]
+    - else
+      div.data= value
