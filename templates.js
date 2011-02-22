@@ -11,6 +11,35 @@ app.helpers({
     },
     // added so that we can pass the value down to partials.
     field: null,
+    calculateDiff: function (field, records) {
+        var local = records.local[field],
+            baseline = records.baseline[field]
+
+        function calc(a, b) {
+            return Math.round(((parseFloat(a) / parseFloat(b)) * 100) - 100)
+        } 
+        if (local && baseline) {
+             if (typeof local !== 'object') {
+                return calc(local, baseline);
+            }
+            else {
+                var values = {};
+                Object.keys(local).forEach( function(year) {
+                    if (baseline[year] && local[year]) {
+                        values[year] = calc(local[year], baseline[year]);
+                    }
+                    else {
+                        values[year] = null;
+                    }
+                });
+                return values;
+            }
+ 
+        }
+
+        return 0;
+    }
+
 });
 
 // various display formatters.
@@ -36,8 +65,8 @@ app.get('*', function(req, res) {
       locals: {
           idKey: 'postcode',
           records: {
-              local: data,
-              baseline: data
+              local: data.local,
+              baseline: data.baseline
           },
           schema: schema,
       }
