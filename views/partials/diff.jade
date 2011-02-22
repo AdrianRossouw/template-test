@@ -1,0 +1,18 @@
+td
+  - if (typeof diff !== 'undefined')
+    div.percentage-difference
+      - if (typeof diff === 'object')
+        - for (year in diff) 
+          div.data
+            div.year!= year
+            ul.difference
+              li(class: 'value ' + (diff[year] < 0) ? 'negative' : 'positive')
+                p= diff[year] + '%'
+                span.index(style: "width: " + Math.abs(diff[year]) + 'px')
+      - else
+        div.data
+          ul.difference
+            li(class: 'value ' + (diff < 0) ? 'negative' : 'positive')
+              p= diff + '%'
+              span.index(style: "width: " + Math.abs(diff) + 'px')
+

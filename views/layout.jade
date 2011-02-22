@@ -4,4 +4,43 @@ html(lang="en")
     title Testing 123
     
   body
-    div!= body
+    div#global-header
+      div.layout-inner
+        a(href: 'http://newamerica.net') New America Foundation
+
+    div#header.clearfix
+      div.layout-inner
+        h3#site-name
+          a(href: '/') Federal Education Budget Project
+
+        ul.links.header-links
+          li
+            a(href: '/') about
+          li
+            a(href: '/') Background and Analysis
+          li
+            a(href: '/') Blog
+
+        ul.links.data-sets
+          li
+            a(href: '/k12') K-12
+          li
+            a(href: '/higher-ed') Higher Education
+
+
+    div#page
+      h1#title Title goes here
+      div#lookup Some weird content goes here.
+      != body
+   
+    div#footer
+      div.layout-inner
+        ul.links.header-links
+          li
+            a(href: '/') about
+          li
+            a(href: '/') Background and Analysis
+          li
+            a.icon.rss(href: '/') Rss
+          li
+            a.icon.twitter(href: 'http://twitter.com') Twitter

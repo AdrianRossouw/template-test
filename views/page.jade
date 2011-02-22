@@ -1,7 +1,7 @@
 h1 Pivoted table
 
 table.pivot
-  tr
+  thead
     th Indicators
     - for (var key in records)
       th= records[key][idKey]
@@ -18,7 +18,7 @@ table.pivot
 h1 Normal table
 
 table
-  tr
+  thead 
     - for (var key in schema.properties)
       th(id: 'field-' + key)= schema.properties[key].name
     - for (var key in records)
