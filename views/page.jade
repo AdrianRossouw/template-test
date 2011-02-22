@@ -1,3 +1,5 @@
+h1 Normal table
+
 table
   tr
     - for (var key in schema.properties)
@@ -6,3 +8,22 @@ table
       tr
         - for (var field in schema.properties)
           != partial('value', [records[key][field]])
+
+h1 Piveted table
+
+table.pivot
+  tr
+    th Indicators
+    - for (var key in records)
+      th= records[key][idKey]
+
+    - for (var field in schema.properties)
+      - if (field !== idKey)
+        tr
+          th(id: 'field-' + field)= schema.properties[field].name
+          - for (var key in records)
+            != partial('value', [records[key][field]])
+
+
+
+
