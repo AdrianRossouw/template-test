@@ -1,12 +1,12 @@
 td
-  - if (typeof value !== 'undefined')
-    - if (typeof value === 'object')
+  - if (typeof indicator !== 'undefined')
+    - if (typeof indicator === 'object')
       div.flot-series-year
-      - for (year in value)
+      - for (year in indicator)
         div.graph
         div.data
           span.year= year
-          span.value= value[year]
-          span.display= format(value[year], schema.properties[field].format)
+          span.value= indicator[year]
+          span.display= format(indicator[year], schema.properties[field].format)
     - else
-      div.data= format(value, schema.properties[field].format)
+      div.data= format(indicator, schema.properties[field].format)

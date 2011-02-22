@@ -35,7 +35,10 @@ app.get('*', function(req, res) {
   res.render('page', {
       locals: {
           idKey: 'postcode',
-          records: [data, data],
+          records: {
+              local: data,
+              baseline: data
+          },
           schema: schema,
       }
   });
