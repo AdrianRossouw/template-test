@@ -7,6 +7,6 @@ td
         div.data
           span.year= year
           span.value= value[year]
-          span.display= value[year]
+          span.display= format(value[year], schema.properties[field].format)
     - else
-      div.data= value
+      div.data= format(value, schema.properties[field].format)

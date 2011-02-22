@@ -9,7 +9,7 @@ table
         - for (var field in schema.properties)
           != partial('value', [records[key][field]])
 
-h1 Piveted table
+h1 Pivoted table
 
 table.pivot
   tr
@@ -23,7 +23,3 @@ table.pivot
           th(id: 'field-' + field)= schema.properties[field].name
           - for (var key in records)
             != partial('value', [records[key][field]])
-
-
-
-
